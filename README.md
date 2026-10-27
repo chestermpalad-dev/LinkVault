@@ -36,4 +36,4 @@ No backend or account registration is required.
 
 ## Author
 
-Chester Mikhail Palad
+Chester Mikhail Palad - Software Developer

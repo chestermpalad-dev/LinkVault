@@ -36,4 +36,4 @@ No backend or account registration is required.
 
 ## Author
 
-Your Name
+Chester Mikhail Palad

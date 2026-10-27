@@ -6,7 +6,7 @@ LinkVault allows users to save, organize, search, and manage their favorite webs
 
 ## 🌐 Live Demo
 
-**Live Website:** linkv4ult.vercel.app
+**Live Website:** [linkv4ult.vercel.app](https://linkv4ult.vercel.app/)
 
 **GitHub Repository:** https://github.com/chestermpalad-dev/linkvault
 

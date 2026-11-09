@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>TheSync - Chairperson Announcements</title>
+
+    <link rel="stylesheet" href="chairperson.css" />
+  </head>
+
+  <body class="chairperson-page">
+    <div class="app-container">
+      <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+      <aside id="chairpersonSidebar" class="sidebar">
+        <div class="sidebar-brand">
+          <img src="logo.png" alt="TheSync Logo" class="brand-logo" />
+
+          <div class="sidebar-brand-text">
+            <span class="brand-text"> TheSync </span>
+
+            <span class="brand-system-label"> Research Defense System </span>
+          </div>
+
+          <button
+            type="button"
+            id="closeSidebarBtn"
+            class="sidebar-close-btn"
+            aria-label="Close navigation"
+          >
+            ×
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="sidebar-section-label">Workspace</div>
+
+          <a href="chairpersondb.html" class="nav-item">
+            <img src="home.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Dashboard </span>
+          </a>
+
+          <a href="chairpersonmanuscript.html" class="nav-item">
+            <img src="group.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Research Groups </span>
+          </a>
+
+          <a href="chairpersontemplate.html" class="nav-item">
+            <img src="template.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Template </span>
+          </a>
+
+          <a href="chairpersonarchive.html" class="nav-item">
+            <img src="archive.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Repository </span>
+          </a>
+
+          <a href="chairpersonannouncement.html" class="nav-item active">
+            <img src="announcement.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Announcements </span>
+          </a>
+
+          <div class="sidebar-section-label management-label">Management</div>
+
+          <a href="usermanagement.html" class="nav-item">
+            <img src="usermanagement.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> User Management </span>
+          </a>
+
+          <a href="chairpersonapproval.html" class="nav-item">
+            <img src="panelistapproval.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Panelist Approval </span>
+          </a>
+
+          <a href="chairpersonprofile.html" class="nav-item">
+            <img src="settings.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Profile </span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <a href="#" id="openLogoutModal" class="nav-item">
+            <img src="logout.png" alt="" class="nav-icon" />
+
+            <span class="nav-label"> Logout </span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- =====================================================
+             MOBILE BACKDROP
+        ====================================================== -->
+
+      <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+      <!-- =====================================================
+             MAIN
+        ====================================================== -->
+
+      <main class="main-content">
+        <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+        <header class="top-header">
+          <div class="top-header-left">
+            <button
+              type="button"
+              id="openSidebarBtn"
+              class="mobile-menu-btn"
+              aria-label="Open navigation"
+            >
+              ☰
+            </button>
+
+            <div class="header-page-info">
+              <strong> Announcements </strong>
+
+              <span> Chairperson Workspace </span>
+            </div>
+          </div>
+
+          <div class="user-profile-pill">
+            <div class="user-info">
+              <span id="chairpersonName" class="user-name"> Chairperson </span>
+
+              <span id="chairpersonRole" class="user-role"> Chairperson </span>
+            </div>
+
+            <img
+              id="profileAvatar"
+              src="/user-avatar.png"
+              alt="User Profile"
+              class="profile-avatar"
+            />
+          </div>
+        </header>
+
+        <!-- =================================================
+                 CONTENT
+            ================================================== -->
+
+        <div class="content-wrapper">
+          <!-- ===============================================
+                     PAGE HEADING
+                ================================================ -->
+
+          <div class="announcement-page-heading">
+            <div class="announcement-page-heading-main">
+              <span class="page-heading-label"> Communication </span>
+
+              <h1 class="page-title">Announcements</h1>
+
+              <p class="page-description">
+                Post and manage important notices for students and panelists.
+              </p>
+            </div>
+          </div>
+
+          <!-- ===============================================
+                     COMPOSER
+                ================================================ -->
+
+          <section class="chair-announcement-composer">
+            <div class="chair-announcement-composer-header">
+              <div class="chair-announcement-composer-heading">
+                <h2>Post Announcement</h2>
+
+                <p>Publish an announcement to the appropriate department.</p>
+              </div>
+
+              <span id="composerScopeBadge" class="status-badge status-neutral">
+                Loading
+              </span>
+            </div>
+
+            <div class="chair-announcement-composer-body">
+              <form id="announcementForm" class="chair-announcement-form">
+                <textarea
+                  id="announcementMessage"
+                  name="message"
+                  class="chair-announcement-textarea"
+                  placeholder="Write an announcement..."
+                  required
+                ></textarea>
+
+                <div
+                  id="announcementMessageError"
+                  class="chair-announcement-form-error"
+                ></div>
+
+                <div class="chair-announcement-composer-footer">
+                  <div
+                    id="departmentField"
+                    class="chair-announcement-department-field"
+                  >
+                    <label
+                      for="announcementDepartment"
+                      class="chair-announcement-field-label"
+                    >
+                      Department
+                    </label>
+
+                    <select
+                      id="announcementDepartment"
+                      name="department"
+                      class="chair-announcement-select"
+                    >
+                      <option value="" selected>Select department</option>
+
+                      <option value="SABM">
+                        School of Accountancy and Business Management
+                      </option>
+
+                      <option value="SIT">
+                        School of Information Technology
+                      </option>
+
+                      <option value="SPHS">
+                        School of Psychology and Human Services
+                      </option>
+
+                      <option value="STE">School of Teacher Education</option>
+
+                      <option value="STHM">
+                        School of Tourism and Hospitality Management
+                      </option>
+                    </select>
+
+                    <div
+                      id="fixedDepartmentDisplay"
+                      class="chair-announcement-department-display"
+                    ></div>
+
+                    <div
+                      id="announcementDepartmentError"
+                      class="chair-announcement-form-error"
+                    ></div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    id="postAnnouncementBtn"
+                    class="chair-announcement-post-button"
+                  >
+                    Post Announcement
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- ===============================================
+                     ANNOUNCEMENT LIST
+                ================================================ -->
+
+          <section class="chair-announcement-list-card">
+            <div class="chair-announcement-list-header">
+              <div class="chair-announcement-list-heading">
+                <h2>Posted Announcements</h2>
+
+                <p>
+                  Review, edit, or remove previously published announcements.
+                </p>
+              </div>
+
+              <span
+                id="announcementCountBadge"
+                class="status-badge status-neutral"
+              >
+                Loading
+              </span>
+            </div>
+
+            <div class="table-scroll">
+              <table class="chair-announcement-table">
+                <thead>
+                  <tr>
+                    <th>Announcement</th>
+
+                    <th>Department</th>
+
+                    <th>Author</th>
+
+                    <th>Date</th>
+
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="announcementBody">
+                  <tr>
+                    <td colspan="5" class="chair-announcement-state">
+                      Loading announcements...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- =========================================================
+         DELETE MODAL
+    ========================================================== -->
+
+    <div id="deleteModalOverlay" class="modal-overlay hidden">
+      <div class="modal-card">
+        <div class="modal-icon">!</div>
+
+        <h2 class="modal-message">Delete this announcement?</h2>
+
+        <p class="modal-description">
+          This announcement will be permanently removed.
+        </p>
+
+        <div
+          id="deleteAnnouncementPreview"
+          class="chair-announcement-delete-preview"
+        >
+          Selected announcement
+        </div>
+
+        <div class="modal-action-row">
+          <button id="cancelDelete" type="button" class="btn-modal-action">
+            Cancel
+          </button>
+
+          <button
+            id="confirmDelete"
+            type="button"
+            class="btn-modal-action btn-modal-danger"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         LOGOUT MODAL
+    ========================================================== -->
+
+    <div id="logoutModalOverlay" class="modal-overlay hidden">
+      <div class="logout-modal-card">
+        <div class="logout-modal-icon">↗</div>
+
+        <h2 class="modal-message">Log out of TheSync?</h2>
+
+        <p class="logout-modal-description">
+          You will need to sign in again to access your Chairperson workspace.
+        </p>
+
+        <div class="modal-action-row">
+          <button id="cancelLogout" type="button" class="btn-modal-action">
+            Cancel
+          </button>
+
+          <button
+            id="confirmLogout"
+            type="button"
+            class="btn-modal-action btn-modal-danger"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         POPUP
+    ========================================================== -->
+
+    <div id="popupNotif" class="popup-notif" aria-live="polite"></div>
+
+    <script>
+      /* =========================================================
+           DEPARTMENTS
+        ========================================================= */
+
+      const departmentNames = {
+        SABM: "School of Accountancy and Business Management",
+
+        SIT: "School of Information Technology",
+
+        SPHS: "School of Psychology and Human Services",
+
+        STE: "School of Teacher Education",
+
+        STHM: "School of Tourism and Hospitality Management",
+      };
+
+      const validDepartments = new Set(["SABM", "SIT", "SPHS", "STE", "STHM"]);
+
+      let currentUserDepartment = null;
+
+      let announcementToDelete = null;
+
+      let announcementPreviewToDelete = "";
+
+      let notificationTimeout = null;
+
+      /* =========================================================
+           ELEMENTS
+        ========================================================= */
+
+      const announcementForm = document.getElementById("announcementForm");
+
+      const messageInput = document.getElementById("announcementMessage");
+
+      const departmentSelect = document.getElementById(
+        "announcementDepartment",
+      );
+
+      const fixedDepartmentDisplay = document.getElementById(
+        "fixedDepartmentDisplay",
+      );
+
+      const postAnnouncementBtn = document.getElementById(
+        "postAnnouncementBtn",
+      );
+
+      const announcementBody = document.getElementById("announcementBody");
+
+      const announcementCountBadge = document.getElementById(
+        "announcementCountBadge",
+      );
+
+      /* =========================================================
+           NOTIFICATION
+        ========================================================= */
+
+      function showNotification(message, type = "info") {
+        const popup = document.getElementById("popupNotif");
+
+        clearTimeout(notificationTimeout);
+
+        popup.textContent = message;
+
+        popup.className = "popup-notif";
+
+        if (type === "success") {
+          popup.classList.add("popup-success");
+        } else if (type === "error") {
+          popup.classList.add("popup-error");
+        } else {
+          popup.classList.add("popup-info");
+        }
+
+        popup.style.display = "block";
+
+        notificationTimeout = setTimeout(function () {
+          popup.style.display = "none";
+        }, 3000);
+      }
+
+      /* =========================================================
+           MOBILE SIDEBAR
+        ========================================================= */
+
+      const sidebar = document.getElementById("chairpersonSidebar");
+
+      const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+      function openSidebar() {
+        sidebar.classList.add("sidebar-open");
+
+        sidebarBackdrop.classList.add("show");
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("sidebar-open");
+
+        sidebarBackdrop.classList.remove("show");
+      }
+
+      document
+        .getElementById("openSidebarBtn")
+        .addEventListener("click", openSidebar);
+
+      document
+        .getElementById("closeSidebarBtn")
+        .addEventListener("click", closeSidebar);
+
+      sidebarBackdrop.addEventListener("click", closeSidebar);
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeSidebar();
+        }
+      });
+
+      /* =========================================================
+           SESSION CHECK
+        ========================================================= */
+
+      window.addEventListener("pageshow", function () {
+        fetch("/chairperson/profile-data", {
+          method: "GET",
+
+          credentials: "include",
+
+          cache: "no-store",
+        })
+          .then((response) => {
+            if (response.status === 401 || response.status === 403) {
+              window.location.replace("/login.html");
+
+              return null;
+            }
+
+            if (!response.ok) {
+              throw new Error("Session check failed.");
+            }
+
+            return response.json();
+          })
+          .catch((error) => {
+            console.error("SESSION CHECK ERROR:", error);
+
+            window.location.replace("/login.html");
+          });
+      });
+
+      /* =========================================================
+           LOAD PROFILE / COMPOSER ACCESS
+        ========================================================= */
+
+      async function loadProfile() {
+        const response = await fetch("/chairperson/profile-data", {
+          credentials: "include",
+
+          cache: "no-store",
+        });
+
+        if (response.status === 401 || response.status === 403) {
+          window.location.replace("/login.html");
+
+          throw new Error("Unauthorized.");
+        }
+
+        if (!response.ok) {
+          throw new Error("Failed to load Chairperson profile.");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("chairpersonName").textContent =
+          `${data.first_name || ""} ${data.last_name || ""}`.trim() ||
+          "Chairperson";
+
+        document.getElementById("chairpersonRole").textContent = `${
+          data.department || ""
+        } • ${data.role || "Chairperson"}`;
+
+        document.getElementById("profileAvatar").src = data.profile_pic
+          ? `/uploads/${data.profile_pic}`
+          : "/user-avatar.png";
+
+        currentUserDepartment = data.department || null;
+
+        const scopeBadge = document.getElementById("composerScopeBadge");
+
+        /* =====================================
+               RD CHAIRPERSON
+            ====================================== */
+
+        if (currentUserDepartment === "RD") {
+          departmentSelect.style.display = "";
+
+          fixedDepartmentDisplay.classList.remove("show");
+
+          scopeBadge.textContent = "All Departments";
+
+          scopeBadge.className = "status-badge status-neutral";
+
+          return;
+        }
+
+        /* =====================================
+               DEPARTMENT CHAIRPERSON
+            ====================================== */
+
+        if (validDepartments.has(currentUserDepartment)) {
+          departmentSelect.value = currentUserDepartment;
+
+          departmentSelect.style.display = "none";
+
+          fixedDepartmentDisplay.textContent =
+            departmentNames[currentUserDepartment] || currentUserDepartment;
+
+          fixedDepartmentDisplay.classList.add("show");
+
+          scopeBadge.textContent = currentUserDepartment;
+
+          scopeBadge.className = "status-badge status-success";
+
+          return;
+        }
+
+        scopeBadge.textContent = "Unavailable";
+
+        scopeBadge.className = "status-badge status-danger";
+      }
+
+      /* =========================================================
+           RESTORE COMPOSER AFTER RESET
+        ========================================================= */
+
+      function restoreDepartmentAfterReset() {
+        if (currentUserDepartment === "RD") {
+          departmentSelect.value = "";
+
+          return;
+        }
+
+        if (validDepartments.has(currentUserDepartment)) {
+          departmentSelect.value = currentUserDepartment;
+        }
+      }
+
+      /* =========================================================
+           CREATE ANNOUNCEMENT
+        ========================================================= */
+
+      announcementForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const messageError = document.getElementById(
+          "announcementMessageError",
+        );
+
+        const departmentError = document.getElementById(
+          "announcementDepartmentError",
+        );
+
+        messageError.textContent = "";
+
+        departmentError.textContent = "";
+
+        const message = messageInput.value.trim();
+
+        let department = departmentSelect.value;
+
+        if (
+          currentUserDepartment !== "RD" &&
+          validDepartments.has(currentUserDepartment)
+        ) {
+          department = currentUserDepartment;
+        }
+
+        if (!message) {
+          messageError.textContent = "Announcement message is required.";
+
+          messageInput.focus();
+
+          return;
+        }
+
+        if (!validDepartments.has(department)) {
+          departmentError.textContent = "Select a valid department.";
+
+          return;
+        }
+
+        postAnnouncementBtn.disabled = true;
+
+        postAnnouncementBtn.textContent = "Posting...";
+
+        try {
+          const response = await fetch("/chairperson/create-announcement", {
+            method: "POST",
+
+            credentials: "include",
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              message: message,
+
+              department: department,
+            }),
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || !result.success) {
+            throw new Error(result.message || "Failed to post announcement.");
+          }
+
+          showNotification("Announcement posted successfully.", "success");
+
+          announcementForm.reset();
+
+          /*
+           * IMPORTANT:
+           * reset() also resets the hidden
+           * department select for non-RD.
+           */
+          restoreDepartmentAfterReset();
+
+          await loadAnnouncements();
+        } catch (error) {
+          console.error("CREATE ANNOUNCEMENT ERROR:", error);
+
+          showNotification(
+            error.message || "Failed to post the announcement.",
+            "error",
+          );
+        } finally {
+          postAnnouncementBtn.disabled = false;
+
+          postAnnouncementBtn.textContent = "Post Announcement";
+        }
+      });
+
+      messageInput.addEventListener("input", function () {
+        if (messageInput.value.trim()) {
+          document.getElementById("announcementMessageError").textContent = "";
+        }
+      });
+
+      departmentSelect.addEventListener("change", function () {
+        if (validDepartments.has(departmentSelect.value)) {
+          document.getElementById("announcementDepartmentError").textContent =
+            "";
+        }
+      });
+
+      /* =========================================================
+           FORMAT DATE
+        ========================================================= */
+
+      function formatAnnouncementDate(value) {
+        if (!value) {
+          return "—";
+        }
+
+        const date = new Date(value);
+
+        if (Number.isNaN(date.getTime())) {
+          return "—";
+        }
+
+        return date.toLocaleDateString("en-PH", {
+          year: "numeric",
+
+          month: "short",
+
+          day: "numeric",
+        });
+      }
+
+      /* =========================================================
+           CREATE ANNOUNCEMENT ROW
+        ========================================================= */
+
+      function createAnnouncementRow(item) {
+        const row = document.createElement("tr");
+
+        /* =====================================
+               ANNOUNCEMENT
+            ====================================== */
+
+        const messageCell = document.createElement("td");
+
+        const messageWrapper = document.createElement("div");
+
+        messageWrapper.className = "chair-announcement-message";
+
+        const messageIcon = document.createElement("img");
+
+        messageIcon.src = "announcements.png";
+
+        messageIcon.alt = "";
+
+        messageIcon.className = "chair-announcement-message-icon";
+
+        const messageText = document.createElement("div");
+
+        messageText.className = "chair-announcement-message-text";
+
+        messageText.textContent = item.message || "—";
+
+        messageWrapper.appendChild(messageIcon);
+
+        messageWrapper.appendChild(messageText);
+
+        messageCell.appendChild(messageWrapper);
+
+        /* =====================================
+               DEPARTMENT
+            ====================================== */
+
+        /* =====================================
+   DEPARTMENT
+====================================== */
+
+        const departmentCell = document.createElement("td");
+
+        const departmentName = document.createElement("span");
+
+        departmentName.className = "chair-announcement-dept-name";
+
+        departmentName.textContent =
+          departmentNames[item.department] ||
+          item.department ||
+          "Unknown Department";
+
+        departmentCell.appendChild(departmentName);
+
+        /* =====================================
+               AUTHOR
+            ====================================== */
+
+        const authorCell = document.createElement("td");
+
+        const authorWrapper = document.createElement("div");
+
+        authorWrapper.className = "chair-announcement-author";
+
+        const avatar = document.createElement("img");
+
+        avatar.className = "chair-announcement-author-avatar";
+
+        avatar.alt = "Announcement author";
+
+        avatar.src = item.profile_pic
+          ? `/uploads/${item.profile_pic}`
+          : "/user-avatar.png";
+
+        avatar.onerror = function () {
+          this.onerror = null;
+
+          this.src = "/user-avatar.png";
+        };
+
+        const authorName = document.createElement("span");
+
+        authorName.className = "chair-announcement-author-name";
+
+        authorName.textContent =
+          `${item.first_name || ""} ${item.last_name || ""}`.trim() ||
+          "Unknown";
+
+        authorWrapper.appendChild(avatar);
+
+        authorWrapper.appendChild(authorName);
+
+        authorCell.appendChild(authorWrapper);
+
+        /* =====================================
+               DATE
+            ====================================== */
+
+        const dateCell = document.createElement("td");
+
+        dateCell.className = "chair-announcement-date";
+
+        dateCell.textContent = formatAnnouncementDate(item.created_at);
+
+        /* =====================================
+               ACTIONS
+            ====================================== */
+
+        const actionsCell = document.createElement("td");
+
+        const actions = document.createElement("div");
+
+        actions.className = "chair-announcement-actions";
+
+        const editButton = document.createElement("button");
+
+        editButton.type = "button";
+
+        editButton.className = "chair-announcement-action-button";
+
+        editButton.textContent = "Edit";
+
+        editButton.addEventListener("click", function () {
+          window.location.href = `chairpersonannouncementedit.html?id=${encodeURIComponent(
+            item.id,
+          )}`;
+        });
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.type = "button";
+
+        deleteButton.className =
+          "chair-announcement-action-button chair-announcement-delete-button";
+
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click", function () {
+          openDeleteAnnouncementModal(
+            item.id,
+            item.message || "Selected announcement",
+          );
+        });
+
+        actions.appendChild(editButton);
+
+        actions.appendChild(deleteButton);
+
+        actionsCell.appendChild(actions);
+
+        row.appendChild(messageCell);
+
+        row.appendChild(departmentCell);
+
+        row.appendChild(authorCell);
+
+        row.appendChild(dateCell);
+
+        row.appendChild(actionsCell);
+
+        return row;
+      }
+
+      /* =========================================================
+           LOAD ANNOUNCEMENTS
+        ========================================================= */
+
+      async function loadAnnouncements() {
+        announcementBody.innerHTML = `
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            class="chair-announcement-state"
+                        >
+                            Loading announcements...
+                        </td>
+
+                    </tr>
+                `;
+
+        try {
+          const response = await fetch("/chairperson/announcements", {
+            credentials: "include",
+
+            cache: "no-store",
+          });
+
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(result.message || "Failed to load announcements.");
+          }
+
+          const announcements = Array.isArray(result) ? result : [];
+
+          announcementCountBadge.textContent = `${announcements.length} ${
+            announcements.length === 1 ? "Announcement" : "Announcements"
+          }`;
+
+          announcementCountBadge.className = "status-badge status-neutral";
+
+          announcementBody.innerHTML = "";
+
+          if (announcements.length === 0) {
+            announcementBody.innerHTML = `
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="chair-announcement-state"
+                                >
+                                    No announcements have been posted.
+                                </td>
+
+                            </tr>
+                        `;
+
+            return;
+          }
+
+          announcements.forEach((item) => {
+            announcementBody.appendChild(createAnnouncementRow(item));
+          });
+        } catch (error) {
+          console.error("ANNOUNCEMENT LOAD ERROR:", error);
+
+          announcementCountBadge.textContent = "Unavailable";
+
+          announcementCountBadge.className = "status-badge status-danger";
+
+          announcementBody.innerHTML = `
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="chair-announcement-state"
+                            >
+                                Unable to load announcements.
+                            </td>
+
+                        </tr>
+                    `;
+
+          showNotification("Unable to load announcements.", "error");
+        }
+      }
+
+      /* =========================================================
+           DELETE ANNOUNCEMENT
+        ========================================================= */
+
+      const deleteModal = document.getElementById("deleteModalOverlay");
+
+      const deletePreview = document.getElementById(
+        "deleteAnnouncementPreview",
+      );
+
+      const confirmDelete = document.getElementById("confirmDelete");
+
+      function openDeleteAnnouncementModal(id, message) {
+        announcementToDelete = id;
+
+        announcementPreviewToDelete = message;
+
+        deletePreview.textContent = announcementPreviewToDelete;
+
+        deleteModal.classList.remove("hidden");
+      }
+
+      function closeDeleteAnnouncementModal() {
+        announcementToDelete = null;
+
+        announcementPreviewToDelete = "";
+
+        deletePreview.textContent = "";
+
+        deleteModal.classList.add("hidden");
+      }
+
+      document
+        .getElementById("cancelDelete")
+        .addEventListener("click", closeDeleteAnnouncementModal);
+
+      deleteModal.addEventListener("click", function (event) {
+        if (event.target === deleteModal) {
+          closeDeleteAnnouncementModal();
+        }
+      });
+
+      confirmDelete.addEventListener("click", async function () {
+        if (!announcementToDelete) {
+          return;
+        }
+
+        const announcementId = announcementToDelete;
+
+        confirmDelete.disabled = true;
+
+        confirmDelete.textContent = "Deleting...";
+
+        try {
+          const response = await fetch("/chairperson/delete-announcement", {
+            method: "POST",
+
+            credentials: "include",
+
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              id: announcementId,
+            }),
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || !result.success) {
+            throw new Error(result.message || "Failed to delete announcement.");
+          }
+
+          closeDeleteAnnouncementModal();
+
+          showNotification("Announcement deleted successfully.", "success");
+
+          await loadAnnouncements();
+        } catch (error) {
+          console.error("DELETE ANNOUNCEMENT ERROR:", error);
+
+          showNotification(
+            error.message || "Failed to delete the announcement.",
+            "error",
+          );
+        } finally {
+          confirmDelete.disabled = false;
+
+          confirmDelete.textContent = "Delete";
+        }
+      });
+
+      /* =========================================================
+           LOGOUT
+        ========================================================= */
+
+      const logoutModal = document.getElementById("logoutModalOverlay");
+
+      document
+        .getElementById("openLogoutModal")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+
+          logoutModal.classList.remove("hidden");
+        });
+
+      document
+        .getElementById("cancelLogout")
+        .addEventListener("click", function () {
+          logoutModal.classList.add("hidden");
+        });
+
+      document
+        .getElementById("confirmLogout")
+        .addEventListener("click", function () {
+          window.location.href = "/logout";
+        });
+
+      logoutModal.addEventListener("click", function (event) {
+        if (event.target === logoutModal) {
+          logoutModal.classList.add("hidden");
+        }
+      });
+
+      /* =========================================================
+           INITIALIZE
+        ========================================================= */
+
+      async function initializePage() {
+        try {
+          await loadProfile();
+
+          await loadAnnouncements();
+        } catch (error) {
+          console.error("ANNOUNCEMENT PAGE ERROR:", error);
+
+          showNotification("Unable to load the Announcements page.", "error");
+        }
+      }
+
+      initializePage();
+    </script>
+  </body>
+</html>
